@@ -18,15 +18,16 @@
 
       - command: mv /usr/local/hadoop-2.9.0 /usr/local/hadoop creates=/usr/local/hadoop removes=/usr/local/hadoop-2.9.0
 
-      - lineinfile: path=/root/.bashrc regexp="HADOOP_PREFIX=" line="export HADOOP_PREFIX=/usr/local/hadoop"
-      - lineinfile: path=/root/.bashrc regexp="PATH=" line="export PATH=$PATH:$HADOOP_PREFIX/bin"
+      - lineinfile: path=/root/.bashrc line="export HADOOP_PREFIX=/usr/local/hadoop"
+      - lineinfile: path=/root/.bashrc line="export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop"  
+      - lineinfile: path=/root/.bashrc line="export PATH=$PATH:$HADOOP_PREFIX/bin"
 
 - name: Update the xml files
   hosts: all
   tasks:
       - template: src={{ item.src }} dest={{ item.dest }} owner="root" group="root"
         with_items:
-         - {src: "core-site.xml", dest: "/usr/local/hadoop/etc/hadoop/core-site.xml"}
-         - {src: "hdfs-site.xml", dest: "/usr/local/hadoop/etc/hadoop/hdfs-site.xml"}
-         - {src: "yarn-site.xml", dest: "/usr/local/hadoop/etc/hadoop/yarn-site.xml"}
-         - {src: "mapred-site.xml", dest: "/usr/local/hadoop/etc/hadoop/yarn-site.xml"}
+         - {src: "templates/core-site.xml", dest: "/usr/local/hadoop/etc/hadoop/core-site.xml"}
+         - {src: "templates/hdfs-site.xml", dest: "/usr/local/hadoop/etc/hadoop/hdfs-site.xml"}
+         - {src: "templates/yarn-site.xml", dest: "/usr/local/hadoop/etc/hadoop/yarn-site.xml"}
+         - {src: "templates/mapred-site.xml", dest: "/usr/local/hadoop/etc/hadoop/yarn-site.xml"}
