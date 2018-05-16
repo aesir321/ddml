@@ -1,0 +1,14 @@
+---
+- name: Configure Java
+  hosts: all
+  tasks:
+      - name: Install Java
+        apt: name=openjdk-8-jre-headless state=present
+        sudo: true
+
+      - name: Update environment with Java
+        lineinfile:
+          path: /etc/environment
+          line: 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"'
+          
+

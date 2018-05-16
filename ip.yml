@@ -1,0 +1,11 @@
+---
+- name: Configure static hostnames for machines
+  hosts: all
+  tasks:
+    - name: Copy script to assign hostname to ip
+      copy:
+        src: assign_ip_to_hostname.sh
+        dest: ~/
+        owner: root
+        mode: +x
+        

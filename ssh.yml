@@ -1,0 +1,29 @@
+---
+- name: Configure ssh
+  hosts: all  
+  tasks:
+    - name: Set authorized_keys file
+      authorized_key:
+         user: root
+         state: present
+         key: "{{ lookup('file', '~/.ssh/id_rsa_ddml.pub') }}"
+
+    - name: Prevent ECDSA Key error between hosts and local machines
+      blockinfile:
+           path: /root/.ssh/config
+           state: present
+           create: yes
+           block: | 
+               Host vm-*.cloud.mwn.de 141.40.2* 10.155.2* *group3*
+               IdentityFile ~/.ssh/id_rsa
+               StrictHostKeyChecking no
+               UserKnownHostsFile /dev/null
+
+    - name: Disable password authentication
+      lineinfile:
+         path: /etc/ssh/sshd_config
+         regexp: '^#PasswordAuthentication yes'
+         line: 'PasswordAuthentication no'
+         state: present
+         backrefs: yes
+      notify: Restart sshd_config
