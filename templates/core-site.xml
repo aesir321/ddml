@@ -18,6 +18,6 @@
 <configuration>
 	<property>
 		<name>fs.defaultFS</name>
-		<value>hdfs://mastergroup3:9000</value>
+		<value>hdfs://mastergroup3dyn.mwn.de:9000</value>
 	</property>
 </configuration>
