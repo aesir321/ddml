@@ -20,4 +20,4 @@
          line: 'PasswordAuthentication no'
          state: present
          backrefs: yes
-      notify: Restart sshd_config
+      notify: restart sshd_config
