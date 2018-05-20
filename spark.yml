@@ -1,0 +1,29 @@
+---
+- name: Download Spark
+  hosts: MASTER
+  tasks:
+   - get_url: 
+      url: http://apache.lauf-forum.at/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz
+      dest: ~/
+
+- name: Extract Spark
+  hosts: MASTER
+  tasks:
+   - unarchive: 
+      src: ~/spark-2.3.0-bin-hadoop2.7.tgz
+      dest: /usr/local/
+      owner: root
+      group: root
+      creates: /usr/local/spark
+      copy: no
+   
+   - command: mv /usr/local/spark-2.3.0-bin-hadoop2.7 /usr/local/spark creates=/usr/local/spark removes=/usr/local/spark
+   - command: rm ~/spark-2.3.0-bin-hadoop2.7.tgz
+
+   - lineinfile: path=/root/.bashrc line="export SPARK_HOME=/usr/local/spark"
+   - lineinfile: path=/root/.bashrc line="export PATH=$PATH:$HADOOP_PREFIX/bin:$SPARK_HOME/bin"
+
+- name: Update spark configuration
+  hosts: MASTER
+  tasks:
+   - template: src="templates/spark-defaults.conf" dest="/usr/local/spark/conf/spark-defaults.conf" owner="root" group="root"
