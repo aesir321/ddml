@@ -20,4 +20,4 @@
     - name: add master public key to slaves
       authorized_key:
         user: root
-        key: "{{ hostvars['M'].master_public_key.stdout }}"
+        key: "{{ hostvars['10.155.208.189'].master_public_key.stdout }}"

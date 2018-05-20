@@ -3,4 +3,4 @@
 
 [SLAVES]
 10.155.208.185 ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root
-10.155.209.168 ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root
+10.155.208.168 ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root

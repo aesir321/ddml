@@ -2,12 +2,6 @@
 - name: Configure ssh
   hosts: all  
   tasks:
-    - name: Set authorized_keys file
-      authorized_key:
-         user: root
-         state: present
-         key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-
     - name: Prevent ECDSA Key error between hosts and local machines
       blockinfile:
            path: /root/.ssh/config
