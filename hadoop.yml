@@ -3,15 +3,16 @@
   hosts: all
   tasks:
       - get_url: 
-          url: http://apache.lauf-forum.at/hadoop/common/hadoop-2.9.0/hadoop-2.9.0-src.tar.gz
+          url: http://apache.lauf-forum.at/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz
           dest: ~/
 
 - name: Extract Hadoop
   hosts: all
   tasks:
       - unarchive: 
-          src: /home/root/hadoop-2.9.0.tar.gz 
-          dest: /usr/local owner=root 
+          src: ~/hadoop-2.9.0.tar.gz 
+          dest: /usr/local/ 
+          owner: root 
           group: root 
           creates: /usr/local/hadoop 
           copy: no
@@ -31,3 +32,15 @@
          - {src: "templates/hdfs-site.xml", dest: "/usr/local/hadoop/etc/hadoop/hdfs-site.xml"}
          - {src: "templates/yarn-site.xml", dest: "/usr/local/hadoop/etc/hadoop/yarn-site.xml"}
          - {src: "templates/mapred-site.xml", dest: "/usr/local/hadoop/etc/hadoop/mapred-site.xml"}
+
+- name: Add slaves file
+  hosts: MASTER
+  tasks: 
+       - template: src="templates/slaves" dest="/usr/local/hadoop/etc/hadoop/slaves" owner="root" group="root"
+
+- name: Format HDFS and launch
+  hosts: MASTER
+  tasks:
+    - command: hdfs namenode -format
+    - command: $HADOOP_PREFIX/sbin/start-dfs.sh
+    - command: $HADOOP_PREFIX/sbin/start-yarn.sh

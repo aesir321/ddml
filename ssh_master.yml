@@ -2,7 +2,7 @@
 - hosts: MASTER
   tasks:
     - name: generate key pair
-      shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N /dev/null
+      shell: ssh-keygen -t rsa
       args:
         creates: /root/.ssh/id_rsa 
 
@@ -20,4 +20,4 @@
     - name: add master public key to slaves
       authorized_key:
         user: root
-        key: "{{ hostvars['10.155.208.189'].master_public_key.stdout }}"
+        key: "{{ hostvars['wpmaster.dyn.mwn.de'].master_public_key.stdout }}"

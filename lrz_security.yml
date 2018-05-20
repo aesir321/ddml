@@ -8,7 +8,7 @@
            state: present
            create: yes
            block: | 
-               Host vm-*.cloud.mwn.de 141.40.2* 10.155.2* *group3*
+               Host vm-*.cloud.mwn.de 141.40.2* 10.155.2* *dyn.mwn.de
                IdentityFile ~/.ssh/id_rsa
                StrictHostKeyChecking no
                UserKnownHostsFile /dev/null
@@ -20,4 +20,4 @@
          line: 'PasswordAuthentication no'
          state: present
          backrefs: yes
-      notify: restart sshd_config
+      notify: service restart ssh
