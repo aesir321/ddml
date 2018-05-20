@@ -4,8 +4,14 @@
   tasks:
     - name: Copy script to assign hostname to ip
       copy:
-        src: assign_ip_to_hostname.sh
+        src: scripts/assign_ip_to_hostname.sh
         dest: ~/
+        owner: root
+        mode: +x
+    - name: Copy rc.local so that it calls script on startup
+      copy:
+        src: templates/rc.local
+        dest: /etc/
         owner: root
         mode: +x
         
