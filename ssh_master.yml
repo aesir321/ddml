@@ -15,7 +15,7 @@
       register: master_public_key
       changed_when: false
 
-- hosts: SLAVES
+- hosts: all
   tasks:
     - name: add master public key to slaves
       authorized_key:
