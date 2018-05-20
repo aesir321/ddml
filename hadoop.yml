@@ -18,6 +18,7 @@
           copy: no
 
       - command: mv /usr/local/hadoop-2.9.0 /usr/local/hadoop creates=/usr/local/hadoop removes=/usr/local/hadoop-2.9.0
+      - command: rm ~/hadoop-2.9.0.tar.gz
 
       - lineinfile: path=/root/.bashrc line="export HADOOP_PREFIX=/usr/local/hadoop"
       - lineinfile: path=/root/.bashrc line="export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop"  
