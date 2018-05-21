@@ -31,7 +31,7 @@
       lineinfile: 
          path: /root/assign_ip_to_hostname.sh
          regexp: '^HOSTNAME='
-         line: 'HOSTNAME=wpslave'
+         line: "HOSTNAME=wpslave{{ groups['SLAVES'].index(inventory_hostname)}}"
 
 
         
