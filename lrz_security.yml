@@ -20,4 +20,4 @@
          line: 'PasswordAuthentication no'
          state: present
          backrefs: yes
-      notify: service restart ssh
+      notify: service ssh restart

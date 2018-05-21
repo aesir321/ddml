@@ -1,6 +1,6 @@
 [MASTER]
-wpmaster.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root
+wpmaster.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
 
 [SLAVES]
-wpslave0.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root
-wpslave1.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_ssh_user=root
+wpslave0.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
+wpslave1.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root

@@ -15,7 +15,6 @@
         dest: /etc/
         owner: root
         mode: +x
-
 - name: Update hostname script for master
   hosts: MASTER
   tasks:
@@ -24,4 +23,15 @@
         path: /root/assign_ip_to_hostname.sh
         regexp: '^HOSTNAME='
         line: 'HOSTNAME=wpmaster'
+
+- name: Update hostname script for slaves
+  hosts: SLAVES
+  tasks:
+    - name: Insert hostname
+      lineinfile: 
+         path: /root/assign_ip_to_hostname.sh
+         regexp: '^HOSTNAME='
+         line: 'HOSTNAME=wpslave'
+
+
         
