@@ -3,16 +3,16 @@
   hosts: all
   tasks:
       - name: Install Java
-        apt: name=openjdk-7-jre-headless state=present
+        apt: name=openjdk-8-jre-headless state=present
         sudo: true
 
       - name: Update environment with Java
         lineinfile:
           path: /etc/environment
-          line: 'JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"'
+          line: 'JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"'
 
       - name: Install jdk for jps
-        apt: name=openjdk-7-jdk state=present
+        apt: name=openjdk-8-jdk state=present
         sudo: true
           
 
