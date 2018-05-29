@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""mapper.py"""
-
 import sys
+from is_prime import is_prime
 
 # input comes from STDIN (standard input)
 for line in sys.stdin:
@@ -16,4 +15,4 @@ for line in sys.stdin:
                 # Reduce step, i.e, the input for reducer.py
                 # 
                 # tab-deliminated; the trivial word count is 1
-                print('{}\t{}'.format(word, 1))
+                print('{}\t{}'.format(is_prime(int(word)), 1))
