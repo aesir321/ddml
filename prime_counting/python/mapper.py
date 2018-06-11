@@ -1,18 +1,24 @@
-#!/usr/bin/env python3
-import sys
-from is_prime import is_prime
+#!/usr/bin/env python
+"""mapper.py"""
 
-# input comes from STDIN (standard input)
+import sys
+
+def is_prime(n):
+        if n == 2 or n == 3: return True
+        if n < 2 or n % 2 == 0: return False
+        if n < 9: return True
+        if n % 3 == 0: return False
+        r = int(n**0.5)
+        f = 5
+
+        while f <= r:
+                if n % f == 0: return False
+                if n % (f + 2) == 0: return False
+                f +=6
+        return True
+
 for line in sys.stdin:
-        # remove leading and trailing whitespace
-        line + line.strip()
-        # split the line into words
+        line = line.strip()
         words = line.split()
-        #increase counters
         for word in words:
-                # write the results to STDOUT (standard output);
-                # what we output here will be the input for the
-                # Reduce step, i.e, the input for reducer.py
-                # 
-                # tab-deliminated; the trivial word count is 1
-                print('{}\t{}'.format(is_prime(int(word)), 1))
+                print '%s\t%s' % (is_prime(int(word)), 1)
