@@ -23,7 +23,7 @@
 	</property>
 	<property>
 		<name>dfs.datanode.data.dir</name>
-		<value>/app/hadoop/tmp/datanode</value>
+		<value>/app/hadoop/tmp/datanodes/datanode2</value>
 	</property>
 	<property>
 		<name>dfs.replication</name>

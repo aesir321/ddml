@@ -4,3 +4,5 @@ wpmaster.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=roo
 [SLAVES]
 wpslave0.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
 wpslave1.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
+wpslave2.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
+wpslave3.dyn.mwn.de ansible_python_interpreter=/usr/bin/python3 ansible_user=root
