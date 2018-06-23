@@ -16,7 +16,7 @@ object kmers {
 		val K = args(2).toInt
 
 		val bcK = sc.broadcast(K)
-		val data = sc.textFile(input)
+		val data = sc.textFile(input, sc.defaultParallelism)
 		
 		// Bad naming here, think it will clash with object name, so capitalised the K.
 		val Kmers = data.flatMap(_.sliding(bcK.value, 1).map((_, 1))) 
