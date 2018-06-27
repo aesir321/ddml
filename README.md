@@ -23,3 +23,15 @@ This repository contains the code used during the 2018 Summer semester TUM Distr
 16. $HADOOP_HOME/sbin/start-yarn.sh
 17. ansible-playbook spark.yml -i hosts
 18. $SPARK_HOME/sbin/start-history-server.sh
+
+## Word counting
+
+
+## Prime counting
+Several implementations for counting prime numbers have been implemented using Java and python and Hadoop MapReduce.  These implementations can be found under prime_counting.
+
+## Ngrams
+A small implementation using the MLlib to find Ngrams was implemented in python, but this was found to be unreliable.
+
+## Kmers
+Finally a scala program was written to identify kmers in .fasta files.
